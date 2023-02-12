@@ -77,5 +77,25 @@ class ClientService implements PostServices {
 
         return null; //For checking to avoid saving two ids which are the same    
     }
+    
+        toggle(clienId: number):void{
+        var todo = this._find(clienId);
+  
+        if(!client) return;
+  
+        switch(client.state)
+        {
+            case LoginState.Active:
+            {
+                client.state=LoginState.Complete;
+                break;
+            }
+            case LoginState.Disactive:
+            {
+              client.state=LoginState.Active;
+                break;
+            }
+        }
+    }
 
 }
